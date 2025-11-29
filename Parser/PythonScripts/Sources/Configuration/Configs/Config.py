@@ -10,6 +10,7 @@ from Sources.Configuration.Configs.SourceType import SourceType
 class Config:
     def __init__(self,
                  padding_per_layer: str,
+                 need_parse_json_alias: bool,
                  debug: DebugConfig,
                  selected_source_type: SourceType,
                  excel_source: ExcelSourceConfig,
@@ -17,6 +18,7 @@ class Config:
                  parsing_features: dict[str, ParsingFeatureConfig],
                  json_aliases_file_paths: list[str]):
         self.padding_per_layer = padding_per_layer
+        self.need_parse_json_alias = need_parse_json_alias
         self.debug = debug
         self.selected_source_type = selected_source_type
         self.excel_source = excel_source
