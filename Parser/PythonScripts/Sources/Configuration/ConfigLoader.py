@@ -18,6 +18,7 @@ class ConfigLoader:
         config_json = self.__LoadJson()
 
         padding_per_layer: str = self.__LoadPaddingPerLayer(config_json.get('paddingPerLayer'))
+        need_parse_json_alias: bool = self.__LoadNeedParceJsonAlias(config_json.get('needParseJsonAlias'))
         debug_config: DebugConfig = self.__LoadDebugConfig(config_json.get('debug'))
 
         selected_source_type: SourceType = self.__LoadSourceType(config_json.get('selectedSourceType'))
@@ -34,8 +35,16 @@ class ConfigLoader:
             config_json.get('jsonAliasesFilePaths', None))
         parsing_feature_configs: dict[str, ParsingFeatureConfig] = self.__LoadParsingFeatureConfigs(config_json)
 
-        return Config(padding_per_layer, debug_config, selected_source_type, excel_source_config,
-                      google_sheets_source_config, parsing_feature_configs, json_aliases_file_paths)
+        return Config(
+            padding_per_layer,
+            need_parse_json_alias,
+            debug_config,
+            selected_source_type,
+            excel_source_config,
+            google_sheets_source_config,
+            parsing_feature_configs,
+            json_aliases_file_paths
+        )
 
     def __LoadJson(self):
         json_file = open(self.__config_file_path, "r")
@@ -47,6 +56,10 @@ class ConfigLoader:
     @staticmethod
     def __LoadPaddingPerLayer(json_value):
         return json_value if json_value is not None else DefaultValues.PaddingPerLayer
+
+    @staticmethod
+    def __LoadNeedParceJsonAlias(json_value) -> bool:
+        return json_value if json_value is not None else DefaultValues.NeedParseJsonAliasValue
 
     def __LoadExcelSourceConfig(self, config_json) -> ExcelSourceConfig:
         if config_json is None:

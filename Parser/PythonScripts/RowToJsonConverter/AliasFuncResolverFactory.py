@@ -6,7 +6,8 @@ from RowToJsonConverter.Node import Node
 from Tests import LogFormatter
 
 
-def create(nodes_by_alias_func_signature: dict[str, Node], json_aliases: dict[str, Alias]) -> AliasFuncResolver:
+def create(nodes_by_alias_func_signature: dict[str, Node], json_aliases: dict[str, Alias],
+           need_parse_json_alias: bool) -> AliasFuncResolver:
     duplicate_alias_func_names: list[str] = []
 
     alias_funcs_by_name: dict[str, AliasFunc] = {}
@@ -19,7 +20,7 @@ def create(nodes_by_alias_func_signature: dict[str, Node], json_aliases: dict[st
     if bool(duplicate_alias_func_names):
         __LogDuplicateAliasFuncs(duplicate_alias_func_names)
 
-    return AliasFuncResolver(alias_funcs_by_name, json_aliases)
+    return AliasFuncResolver(alias_funcs_by_name, json_aliases, need_parse_json_alias)
 
 
 def __LogDuplicateAliasFuncs(alias_func_names: list[str]):
