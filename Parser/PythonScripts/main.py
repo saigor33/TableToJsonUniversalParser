@@ -32,8 +32,8 @@ def main(config_file_path: str):
     load_alias_func_nodes_result: ParsingWrapper.LoadResult = \
         ParsingWrapper.load(ref_nodes_joiner, source_wrapper, source_wrapper.getAliasFuncsParsingConfig())
 
-    alias_func_resolver = AliasFuncResolverFactory.create(load_alias_func_nodes_result.nodes_by_feature_name,
-                                                          json_aliases)
+    alias_func_resolver = AliasFuncResolverFactory.create(
+        load_alias_func_nodes_result.nodes_by_feature_name, json_aliases, config.need_parse_json_alias)
 
     load_feature_nodes_result: ParsingWrapper.LoadResult = \
         ParsingWrapper.load(ref_nodes_joiner, source_wrapper, source_wrapper.getFeaturesParsingConfig())
