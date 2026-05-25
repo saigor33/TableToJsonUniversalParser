@@ -48,6 +48,14 @@ def _JoinInternal(
             alias_func_resolver.resolve(feature_name, alias_func_name, alias_func_args, alias_func_stack,
                                         root_field_names_stack, current_root_field_name)
         return Node(node.name, resolved_alias_func_node.value, resolved_alias_func_node.inner_nodes)
+    elif node.value == Configuration.ReferenceType.Array:
+        for index, inner_node in enumerate(node.inner_nodes):
+            new_root_field_names_stack = root_field_names_stack + [current_root_field_name]
+            new_current_root_field_name = f'ArrayItemIndex:{index}' # Array item node name is always empty
+            node.inner_nodes[index] = \
+                _JoinInternal(feature_name, inner_node, alias_func_resolver, alias_func_stack,
+                              new_root_field_names_stack, new_current_root_field_name)
+        return node
     elif node.inner_nodes is not None:
         for index, inner_node in enumerate(node.inner_nodes):
             new_root_field_names_stack = root_field_names_stack + [current_root_field_name]
