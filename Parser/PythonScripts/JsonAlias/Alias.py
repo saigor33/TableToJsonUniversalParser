@@ -121,6 +121,7 @@ class Alias:
                     if missing_arg_names_by_path is None:
                         missing_arg_names_by_path = {}
                     missing_arg_names_by_path[f'<unknown_stack_{i}>'] = arg_item.arg_name
+                    texts.append(f'"Missing arg - {arg_item.arg_name}"')
             elif item_type == TextItem:
                 text_item: TextItem = item
                 texts.append(text_item.text)
