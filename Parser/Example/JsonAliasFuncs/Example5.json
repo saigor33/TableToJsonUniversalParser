@@ -1,0 +1,60 @@
+{
+    "SeasonCoreRandomBoosterReward":
+    {
+        "$type": "Common.GameplayConfigs.Player.Seasons.SeasonConfig+Reward",
+        "isPremium": "%arg1:bool%",
+        "reward":
+        {
+            "$type": "Common.GameplayConfigs.Player.Rewards.Reward",
+            "good":
+            {
+                "$type": "Common.GameplayConfigs.Player.Goods.RandomCoreParametersBoosterGoodConfig",
+                "boosterPresetKey": "\"%arg2:str%\"",
+                "count": "%arg3:num%"
+            }
+        }
+    },
+    "SeasonHardReward":
+    {
+        "$type": "Common.GameplayConfigs.Player.Seasons.SeasonConfig+Reward",
+        "isPremium": "%arg1:bool%",
+        "reward":
+        {
+            "$type": "Common.GameplayConfigs.Player.Rewards.Reward",
+            "good":
+            {
+                "$type": "Common.GameplayConfigs.Player.Goods.HardCurrencyGoodConfig",
+                "amount": "%arg2:num%"
+            }
+        }
+    },
+    "SeasonWheelTicketsReward":
+    {
+        "$type": "Common.GameplayConfigs.Player.Seasons.SeasonConfig+Reward",
+        "isPremium": "%arg1:bool%",
+        "reward":
+        {
+            "$type": "Common.GameplayConfigs.Player.Rewards.Reward",
+            "good":
+            {
+                "$type": "Common.GameplayConfigs.Player.Goods.WheelTicketsGoodConfig",
+                "type": "\"%arg2:str%\"",
+                "count": "%arg3:num%"
+            }
+        }
+    },
+    "SeasonLootBoxReward":
+    {
+        "$type": "Common.GameplayConfigs.Player.Seasons.SeasonConfig+Reward",
+        "isPremium": "%arg1:bool%",
+        "reward":
+        {
+            "$type": "Common.GameplayConfigs.Player.Rewards.RewardsByClub",
+            "defaultGood":
+            {
+                "$type": "Common.GameplayConfigs.Player.Goods.LootBoxGoodConfig",
+                "lootBoxKey": "\"%arg2:str%\""
+            }
+        }
+    }
+}
