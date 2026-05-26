@@ -105,7 +105,8 @@
 	[
 		"../Example/JsonAliasFuncs/Goods.json",
 		"../Example/JsonAliasFuncs/Example3.3.1_ArgsVariations.json",
-		"../Example/JsonAliasFuncs/Example3.4Funcs.json"
+		"../Example/JsonAliasFuncs/Example3.4Funcs.json",
+		"../Example/JsonAliasFuncs/Example5.json"
 	],
 	"features":
 	[
@@ -148,6 +149,11 @@
 			"featureName": "season",
 			"outputDirectory": "../Example/Temp/Output",
 			"outputFileName": "SeasonConfig.json"
+		},
+		{
+			"featureName": "season48",
+			"outputDirectory": "../Example/Temp/Output",
+			"outputFileName": "Season48ParsingResult.json"
 		}
 	]
 }
